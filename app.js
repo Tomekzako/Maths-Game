@@ -7,8 +7,10 @@ document.addEventListener('DOMContentLoaded', function () {
     const timer = document.querySelector('.timer');
     const wrong = document.querySelector('.wrong');
     const correct = document.querySelector('.correct');
+    const question = document.querySelector('.question');
     let action;
     let timeremaining;
+    let correctAnswer;
 
 
     startBtn.addEventListener('click', function () {
@@ -23,6 +25,8 @@ document.addEventListener('DOMContentLoaded', function () {
             startBtn.innerHTML = "Reset Game";
             timeremaining = 10;
             startCounting();
+            hide(gameOver);
+            createQuestion();
         }
     });
 
@@ -39,6 +43,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 hide(correct);
                 hide(wrong);
                 playing = false;
+                startBtn.innerHTML = "Start Game";
             }
         }, 1000)
     }
@@ -55,4 +60,10 @@ document.addEventListener('DOMContentLoaded', function () {
         name.style.display = "none";
     }
 
+    function createQuestion() {
+        let x = (Math.round(Math.random() * 9) + 1);
+        let y = (Math.round(Math.random() * 9) + 1);
+        correctAnswer = x * y;
+        question.innerHTML = x + "x" + y;
+    }
 });
