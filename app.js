@@ -5,6 +5,8 @@ document.addEventListener('DOMContentLoaded', function () {
     const startBtn = document.querySelector('.startreset');
     const gameOver = document.querySelector('.gameOver');
     const timer = document.querySelector('.timer');
+    const wrong = document.querySelector('.wrong');
+    const correct = document.querySelector('.correct');
     let action;
     let timeremaining;
 
@@ -17,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function () {
             playing = true;
             score = 0;
             document.querySelector('#scoreValue').innerHTML = score;
-            timer.style.display = 'block';
+            show(timer);
             startBtn.innerHTML = "Reset Game";
             timeremaining = 10;
             startCounting();
@@ -31,15 +33,26 @@ document.addEventListener('DOMContentLoaded', function () {
 
             if (timeremaining == 0) {
                 stopCounting();
-                gameOver.style.display = "block";
+                show(gameOver);
                 gameOver.innerHTML = "<p>Game Over!!!</p><p>Your Score is " + score + ".</p>";
-                timer.style.display = 'none';
+                hide(timer);
+                hide(correct);
+                hide(wrong);
+                playing = false;
             }
         }, 1000)
     }
 
     function stopCounting() {
         clearInterval(action);
+    }
+
+    function show(name) {
+        name.style.display = "block";
+    }
+
+    function hide(name) {
+        name.style.display = "none";
     }
 
 });
