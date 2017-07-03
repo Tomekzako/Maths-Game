@@ -63,7 +63,10 @@ document.addEventListener('DOMContentLoaded', function () {
     function createQuestion() {
         let x = (Math.round(Math.random() * 9) + 1);
         let y = (Math.round(Math.random() * 9) + 1);
+        let correctPosition = (Math.round(Math.random() * 3) + 1);
         correctAnswer = x * y;
         question.innerHTML = x + "x" + y;
+        document.querySelector("#box" + correctPosition).innerHTML = correctAnswer;
+
     }
 });
