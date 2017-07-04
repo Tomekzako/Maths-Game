@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', function () {
     let playing = false;
     let score;
     const startBtn = document.querySelector('.startreset');
+    const scoreValue = document.querySelector('#scoreValue');
     const gameOver = document.querySelector('.gameOver');
     const timer = document.querySelector('.timer');
     const wrong = document.querySelector('.wrong');
@@ -20,7 +21,7 @@ document.addEventListener('DOMContentLoaded', function () {
         } else {
             playing = true;
             score = 0;
-            document.querySelector('#scoreValue').innerHTML = score;
+            scoreValue.innerHTML = score;
             show(timer);
             startBtn.innerHTML = "Reset Game";
             timeremaining = 60;
@@ -29,6 +30,19 @@ document.addEventListener('DOMContentLoaded', function () {
             createQuestion();
         }
     });
+
+    let boxes = document.querySelectorAll(".box");
+    for (var i = 0; i < boxes.length; i++) {
+        boxes[i].addEventListener("click", function () {
+            if (playing == true) {
+                if (this.innerHTML == correctAnswer) {
+                    score++;
+                    scoreValue.innerHTML = score;
+                }
+            }
+        });
+
+    }
 
     function startCounting() {
         action = setInterval(function () {
