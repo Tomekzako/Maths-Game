@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', function () {
             document.querySelector('#scoreValue').innerHTML = score;
             show(timer);
             startBtn.innerHTML = "Reset Game";
-            timeremaining = 10;
+            timeremaining = 60;
             startCounting();
             hide(gameOver);
             createQuestion();
@@ -68,5 +68,11 @@ document.addEventListener('DOMContentLoaded', function () {
         question.innerHTML = x + "x" + y;
         document.querySelector("#box" + correctPosition).innerHTML = correctAnswer;
 
+        for (var i = 1; i < 5; i++) {
+            if (i !== correctPosition) {
+                var wrongAnswers = (Math.round(Math.random() * 9) + 1) * (Math.round(Math.random() * 9) + 1);
+                document.querySelector("#box" + i).innerHTML = wrongAnswers;
+            }
+        }
     }
 });
