@@ -44,6 +44,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     setTimeout(function () {
                         hide(correct);
                     }, 1000);
+                    createQuestion();
                 } else {
                     hide(correct);
                     show(wrong);
