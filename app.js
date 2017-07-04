@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const wrong = document.querySelector('.wrong');
     const correct = document.querySelector('.correct');
     const question = document.querySelector('.question');
+    const boxes = document.querySelectorAll(".box");
     let action;
     let timeremaining;
     let correctAnswer;
@@ -31,13 +32,24 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    let boxes = document.querySelectorAll(".box");
+
     for (var i = 0; i < boxes.length; i++) {
         boxes[i].addEventListener("click", function () {
             if (playing == true) {
                 if (this.innerHTML == correctAnswer) {
                     score++;
                     scoreValue.innerHTML = score;
+                    hide(wrong);
+                    show(correct);
+                    setTimeout(function () {
+                        hide(correct);
+                    }, 1000);
+                } else {
+                    hide(correct);
+                    show(wrong);
+                    setTimeout(function () {
+                        hide(wrong);
+                    }, 1000);
                 }
             }
         });
