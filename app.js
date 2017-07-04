@@ -70,7 +70,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
         for (var i = 1; i < 5; i++) {
             if (i !== correctPosition) {
-                var wrongAnswers = (Math.round(Math.random() * 9) + 1) * (Math.round(Math.random() * 9) + 1);
+                var wrongAnswers;
+                do {
+                    wrongAnswers = (Math.round(Math.random() * 9) + 1) * (Math.round(Math.random() * 9) + 1);
+                } while (wrongAnswers == correctAnswer);
                 document.querySelector("#box" + i).innerHTML = wrongAnswers;
             }
         }
