@@ -68,13 +68,15 @@ document.addEventListener('DOMContentLoaded', function () {
         question.innerHTML = x + "x" + y;
         document.querySelector("#box" + correctPosition).innerHTML = correctAnswer;
 
+        var answers = [correctAnswer];
         for (var i = 1; i < 5; i++) {
             if (i !== correctPosition) {
                 var wrongAnswers;
                 do {
                     wrongAnswers = (Math.round(Math.random() * 9) + 1) * (Math.round(Math.random() * 9) + 1);
-                } while (wrongAnswers == correctAnswer);
+                } while (answers.indexOf(wrongAnswers) > -1);
                 document.querySelector("#box" + i).innerHTML = wrongAnswers;
+                answers.push(wrongAnswers);
             }
         }
     }
